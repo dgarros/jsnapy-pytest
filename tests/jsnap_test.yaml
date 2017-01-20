@@ -1,0 +1,13 @@
+hosts:
+  - device: 127.0.0.1
+    username: root
+    passwd: Juniper
+    port: 2222
+  - device: 127.0.0.1
+    username: root
+    passwd: Juniper
+    port: 2200
+
+tests:
+  - test_junos_alarm.yml
+  - test_junos_interface_ext.yml

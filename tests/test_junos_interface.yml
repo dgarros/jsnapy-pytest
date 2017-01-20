@@ -1,0 +1,17 @@
+tests_include:
+  - check_int
+
+check_int:
+  - command: show interfaces terse
+  # - iterate:
+  #     xpath: '//interface-information/physical-interface[admin-status="up" and logical-interface/address-family/address-family-name="eth-switch"]'
+  #     tests:
+  #     - is-equal: oper-status, up
+  #       info:  "All Interfaces with Admin UP and Eth-Switch are UP"
+  #       err:   "Interface {{port['name']}} is not UP/UP"
+  - iterate:
+      xpath: //interface-information/physical-interface[normalize-space(admin-status)='up']
+      tests:
+      - is-equal: oper-status, up
+        info: "All Interfaces with Admin UP have oper status UP"
+        err:  "Interface {{post['name']}} is not UP/UP"
